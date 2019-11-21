@@ -16,6 +16,10 @@ comment=""
 status=0
 
 for file in ${INPUT_FILES}; do
+  if [ ! -f "$file" ]; then
+    continue
+  fi
+
   OUTPUT=$(lint "${file}")
 
   if [ -z "${OUTPUT}" ]; then
