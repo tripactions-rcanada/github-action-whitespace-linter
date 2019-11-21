@@ -16,7 +16,7 @@ comment=""
 status=0
 
 for file in ${INPUT_FILES}; do
-  if [ ! -f "$file" ]; then
+  if [ -d "$file" ]; then
     continue
   fi
 
