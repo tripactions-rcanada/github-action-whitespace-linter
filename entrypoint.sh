@@ -23,11 +23,19 @@ for file in ${INPUT_FILES}; do
 
   OUTPUT=$(lint "${file}")
 
+  if [ ! -z "$(tail -c 1 "$file")" ]
+  then
+    OUTPUT="${OUTPUT}
+No newline at end of file"
+  fi
+
   if [ -z "${OUTPUT}" ]; then
     continue
   fi
+
   echo "${file}:"
   echo "${OUTPUT}"
+
   status=1
 
   comment="${comment}<details><summary><code>${file}</code></summary>
