@@ -21,6 +21,10 @@ for file in ${INPUT_FILES}; do
     continue
   fi
 
+  if ! file "$file" | grep -iq text ; then
+    continue
+  fi
+
   OUTPUT=$(lint "${file}")
 
   if [ ! -z "$(tail -c 1 "$file")" ]
